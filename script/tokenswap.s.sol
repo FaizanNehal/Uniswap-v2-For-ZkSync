@@ -16,11 +16,12 @@ contract testScript is Script {
     function run() public {
         vm.startBroadcast();
         (uint112 reserve0, uint112 reserve1, uint32 blockTimestampLast) = pair.getReserves();
-        console.log("RESERVE 0: ",reserve0);
-        console.log("RESERVE 1: ",reserve1);
+        console.log("BEFORE SWAP");
+        console.log("RESERVE of ERC20 Token Sample1: ",reserve0);
+        console.log("RESERVE of ERC20 Token Sample2: ",reserve1);
         console.log("TIMESTAMP: ",blockTimestampLast);
-        console.log("TOKEN A BEFORE SWAP: ",tokenA.balanceOf(msg.sender));
-        console.log("TOKEN B BEFORE SWAP: ",tokenB.balanceOf(msg.sender));
+     //   console.log("TOKEN A BEFORE SWAP: ",tokenA.balanceOf(msg.sender));
+     //   console.log("TOKEN B BEFORE SWAP: ",tokenB.balanceOf(msg.sender));
 
      //   counter.transfer(0x0D43eB5B8a47bA8900d84AA36656c92024e9772e, 10000);
 
@@ -33,12 +34,14 @@ contract testScript is Script {
         paths[1]=address(0x922a36d29b1e991DB35b8e14C08828eC31E64Ac0);
         router.swapExactTokensForTokens(200, 0, paths, 0x0D43eB5B8a47bA8900d84AA36656c92024e9772e, block.timestamp+400);
 
-        console.log("TOKEN A AFTER SWAP: ",tokenA.balanceOf(msg.sender));
-        console.log("TOKEN B AFTER SWAP: ",tokenB.balanceOf(msg.sender));
+       // console.log("TOKEN A AFTER SWAP: ",tokenA.balanceOf(msg.sender));
+       // console.log("TOKEN B AFTER SWAP: ",tokenB.balanceOf(msg.sender));
 
         (reserve0, reserve1, blockTimestampLast) = pair.getReserves();
-        console.log("RESERVE 0: ",reserve0);
-        console.log("RESERVE 1: ",reserve1);
+        console.log("");
+        console.log("AFTER SWAP");
+        console.log("RESERVE ERC20 Token Sample1: ",reserve0);
+        console.log("RESERVE ERC20 Token Sample2: ",reserve1);
         console.log("TIMESTAMP: ",blockTimestampLast);
 
         //pair.swap(100, 100, 0x0D43eB5B8a47bA8900d84AA36656c92024e9772e, data);
